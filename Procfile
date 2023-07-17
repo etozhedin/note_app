@@ -1,1 +1,1 @@
-web: gunicorn note_app.backend.note_app.wsgi --log-file -
+web: gunicorn --pythonpath note_app/backend note_app.wsgi
