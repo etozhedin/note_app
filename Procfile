@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath note_app note_app.wsgi --log-file -
+web: gunicorn note_app.note_app.wsgi --log-file -
