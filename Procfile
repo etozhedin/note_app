@@ -1,1 +1,3 @@
-web: gunicorn note_app.wsgi
+web: gunicorn note_app.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
