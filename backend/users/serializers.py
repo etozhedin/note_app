@@ -1,19 +1,5 @@
 from rest_framework import serializers
-from .models import Note
 from django.contrib.auth.models import User
-
-class NoteSerializer(serializers.ModelSerializer):
-      owner = serializers.ReadOnlyField(source='owner.username')
-      class Meta: 
-            model = Note
-            fields = [
-                  'pk',
-                  'owner',
-                  'title',
-                  'content',
-                  'created',
-                  'updated',
-            ]
 
 class UserSerializer(serializers.ModelSerializer):
       password = serializers.CharField(write_only=True)
