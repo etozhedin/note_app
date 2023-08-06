@@ -6,4 +6,4 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 
 class CustomObtainAuthToken (TokenObtainPairView):
-    permission_classes = [AllowAny]
+    permission_classes = (AllowAny, )
