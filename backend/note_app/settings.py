@@ -78,7 +78,7 @@ CORS_ALLOW_METHODS = (
     'POST',
     'PUT'
 )
-
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'note_app.urls'
 
