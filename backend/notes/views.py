@@ -37,3 +37,7 @@ class NoteRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication, SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated, isOwnerOrReadOnly]
 note_retrieve_update_destroy_view = NoteRetrieveUpdateDestroy.as_view()
+
+class NoteListView(generics.ListAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
