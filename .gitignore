@@ -1,5 +1,6 @@
-.firebaseAccessKey.json
+.firebaseAccessKey
 .tetxt
+
 .env.prod
 web/.env
 .DS_Store
