@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -76,8 +77,9 @@ CORS_ALLOW_METHODS = (
     'OPTIONS',
     'PATCH',
     'POST',
-    'PUT'
+    'PUT',
 )
+
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'note_app.urls'
@@ -172,4 +174,9 @@ REST_FRAMEWORK = {
     
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), 
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }

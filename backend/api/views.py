@@ -7,3 +7,4 @@ from rest_framework.permissions import AllowAny
 
 class CustomObtainAuthToken (TokenObtainPairView):
     permission_classes = (AllowAny, )
+    http_method_names = ['post', 'get']
