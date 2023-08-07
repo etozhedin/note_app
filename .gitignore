@@ -1,4 +1,4 @@
-.firebaseAccessKey
+serviceAccountKey.json
 .tetxt
 
 .env.prod
