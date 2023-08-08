@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['127.0.0.1']#'radiant-lake-40001-986857f539d4.herokuapp.com'
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +54,9 @@ INSTALLED_APPS = [
     'notes',
     'note_app',
     'api',
+    # 'users'
 ]
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
