@@ -6,7 +6,7 @@ from firebase_admin import storage
 # User = settings.AUTH_USER_MODEL
 class UserSerializer(serializers.ModelSerializer):
       password = serializers.CharField(write_only=True)
-      avatar = serializers.ImageField(write_only=True)  # Поле для загрузки аватара
+      avatar = serializers.ImageField(write_only=True, required = False)  # Поле для загрузки аватара
       class Meta:
             model = User
             fields = (
@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
                   'avatar'
             )
       def create(self, validated_data):
-            avatar_data = validated_data.pop('avatar')
+            avatar_data = validated_data.pop('avatar', None)
             user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
@@ -34,5 +34,6 @@ class UserSerializer(serializers.ModelSerializer):
                   # Получить URL аватарки и сохранить его в модель пользователя
                   user.avatar_url = blob.public_url
                   user.save()
+                  
       
             return user
