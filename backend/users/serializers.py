@@ -3,6 +3,7 @@ from rest_framework import serializers
 from django.conf import settings
 from .models import User
 from firebase_admin import storage
+import base64
 # User = settings.AUTH_USER_MODEL
 class UserSerializer(serializers.ModelSerializer):
       password = serializers.CharField(write_only=True)
@@ -16,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
                   'first_name',
                   'last_name',
                   'avatar', 
-                  'avatar_url'
+                  # 'avatar_url'
             )
       def create(self, validated_data):
             avatar_data = validated_data.pop('avatar', None)
@@ -29,6 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
             avatar_url = validated_data.pop('avatar_url', '')
         )
             if avatar_data:
+                  avatar_data = base64.b64decode(avatar_data)
                   bucket = storage.bucket()
                   blob = bucket.blob(f"avatars/{user.id}/{avatar_data.name}")
                   blob.upload_from_string(avatar_data.read(), content_type=avatar_data.content_type)
