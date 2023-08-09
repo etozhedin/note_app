@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserDetailSerializer
 from rest_framework.permissions import IsAuthenticated
 from api.permissions import isOwnerOrReadOnly
 from .models import User
@@ -12,7 +12,7 @@ class UserRegistration(generics.CreateAPIView):
 
 class UserDetailView(generics.ListAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserDetailSerializer
     permission_classes = (IsAuthenticated, isOwnerOrReadOnly)
     def get_queryset(self):
         queryset = User.objects.all().filter(username = self.request.user)
