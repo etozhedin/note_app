@@ -15,7 +15,8 @@ class UserSerializer(serializers.ModelSerializer):
                   'email',
                   'first_name',
                   'last_name',
-                  'avatar'
+                  'avatar', 
+                  'avatar_url'
             )
       def create(self, validated_data):
             avatar_data = validated_data.pop('avatar', None)
@@ -24,7 +25,8 @@ class UserSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             password=validated_data['password'],
             first_name=validated_data.get('first_name', ''),
-            last_name=validated_data.get('last_name', '')
+            last_name=validated_data.get('last_name', ''),
+            avatar_url = validated_data.pop('avatar_url', '')
         )
             if avatar_data:
                   bucket = storage.bucket()

@@ -7,4 +7,4 @@ class Note(models.Model):
     content = models.CharField(max_length=2000)
     created = models.DateTimeField(auto_now_add=True)
     updated =  models.DateTimeField(auto_now=True)
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE, default=None)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=None)
