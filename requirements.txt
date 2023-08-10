@@ -6,3 +6,5 @@ pyyaml
 requests
 django-cors-headers
 gunicorn
+firebase-admin
+pillow
