@@ -10,7 +10,7 @@ from django.core.files.base import ContentFile
 
 # User = settings.AUTH_USER_MODEL
 class UserSerializer(serializers.ModelSerializer):
-      password = serializers.CharField(write_only=True)
+      password = serializers.CharField(write_only=True)     
       avatar = serializers.ImageField(write_only=True, required = False)  # Поле для загрузки аватара
       class Meta:
             model = User
@@ -34,13 +34,12 @@ class UserSerializer(serializers.ModelSerializer):
             avatar_url = validated_data.pop('avatar_url', '')
         )
             if avatar_data:
-
                   avatar_data = base64.b64decode(avatar_data)
                   avatar_name = f"avatar_{user.id}.png"
                   content = ContentFile(avatar_data, name = avatar_name)
 
                   bucket = storage.bucket()
-                  blob = bucket.blob(f"avatars/{user.id}/{avatar_data.name}")
+                  blob = bucket.blob(f"avatars/{user.id}/{avatar_name}")
                   # blob.upload_from_string(avatar_data.read(), content_type=avatar_data.content_type)
                   blob.upload_from_string(content, content_type=avatar_data.content_type)
                   # Получить URL аватарки и сохранить его в модель пользователя
