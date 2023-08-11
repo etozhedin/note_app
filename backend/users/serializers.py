@@ -11,8 +11,8 @@ from django.core.files.base import ContentFile
 # User = settings.AUTH_USER_MODEL
 class UserSerializer(serializers.ModelSerializer):
       password = serializers.CharField(write_only=True)     
-      # avatar = serializers.ImageField(write_only=True, required = False)  # Поле для загрузки аватара
-      avatar = serializers.CharField(write_only=True, required = False)
+      avatar = serializers.ImageField(write_only=True, required = False)  # Поле для загрузки аватара
+      # avatar = serializers.CharField(write_only=True, required = False)
       class Meta:
             model = User
             fields = (
@@ -36,9 +36,9 @@ class UserSerializer(serializers.ModelSerializer):
         )
             if avatar_data:
 
-                  avatar_data = base64.b64decode(avatar_data)
-                  avatar_name = f"avatar_{user.id}.png"
-                  content = ContentFile(avatar_data, name = avatar_name)
+                  # avatar_data = base64.b64decode(avatar_data)
+                  # avatar_name = f"avatar_{user.id}.png"
+                  # content = ContentFile(avatar_data, name = avatar_name)
 
                   bucket = storage.bucket()
                   blob = bucket.blob(f"avatars/{user.id}/{avatar_name}")
