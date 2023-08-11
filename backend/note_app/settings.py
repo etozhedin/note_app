@@ -33,7 +33,8 @@ SECRET_KEY = 'django-insecure-6zpvd&($jlp0p@navj*h$8ta^-ks&qqgo_5h$nu&936sk$eay_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']#'radiant-lake-40001-986857f539d4.herokuapp.com'
+ALLOWED_HOSTS = ['127.0.0.1',
+                 '.vercel.app']#'radiant-lake-40001-986857f539d4.herokuapp.com'
 
 # Application definition
 
