@@ -1,14 +1,14 @@
 {
     "builds": [
       {
-        "src": "note_app/backend/note_app/wsgi.py",
+        "src": "backend/note_app/wsgi.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "note_app/backend/note_app/wsgi.py"
+        "dest": "backend/note_app/wsgi.py"
       }
     ]
 }
