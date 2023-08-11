@@ -41,9 +41,9 @@ class UserSerializer(serializers.ModelSerializer):
                   # content = ContentFile(avatar_data, name = avatar_name)
 
                   bucket = storage.bucket()
-                  blob = bucket.blob(f"avatars/{user.id}/{avatar_name}")
+                  blob = bucket.blob(f"avatars/{user.id}/{avatar_data.name}")
                   # blob.upload_from_string(avatar_data.read(), content_type=avatar_data.content_type)
-                  blob.upload_from_string(content, content_type=avatar_data.content_type)
+                  blob.upload_from_string(avatar_data, content_type=avatar_data.content_type)
                   # Получить URL аватарки и сохранить его в модель пользователя
                   user.avatar_url = blob.public_url
                   user.save()
