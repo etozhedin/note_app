@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 FIREBASE_KEY_PATH = os.path.join(BASE_DIR.parent, 'serviceAccountKey.json')
 cred = credentials.Certificate(FIREBASE_KEY_PATH)
 firebase_admin.initialize_app(cred, {
-    'storageBucket': str(os.environ.get('FIREBASE_STORAGE'))
+    'storageBucket': os.environ.get('FIREBASE_STORAGE')
 })
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -116,6 +116,19 @@ WSGI_APPLICATION = 'note_app.wsgi.app'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+DB_USERNAME = os.environ.get('DB_USER')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_NAME = os.environ.get('DB_NAME')
+DB_HOST = os.environ.get('DB-HOST')
+DB_PORT = os.environ.get('DB_PORT')
+DB_IS_AVAIL = all([
+    DB_USERNAME,
+    DB_PASSWORD,
+    DB_NAME,
+    DB_HOST,
+    DB_PORT
+])
 
 DATABASES = {
     'default': {

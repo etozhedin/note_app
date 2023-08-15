@@ -41,7 +41,7 @@ class UserSerializer(serializers.ModelSerializer):
                   # content = ContentFile(avatar_data, name = avatar_name)
 
                   bucket = storage.bucket()
-                  blob = bucket.blob(f"avatars/{user.id}/{avatar_data.name}")
+                  blob = bucket.blob(f"avatars/{user.id}/{user.username}/{avatar_data.name}")
                   # blob.upload_from_string(avatar_data.read(), content_type=avatar_data.content_type)
                   blob.upload_from_string(avatar_data.read(), content_type=avatar_data.content_type)
                   blob.make_public()
