@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 FIREBASE_KEY_PATH = os.path.join(BASE_DIR.parent, 'serviceAccountKey.json')
 cred = credentials.Certificate(FIREBASE_KEY_PATH)
 firebase_admin.initialize_app(cred, {
-    'storageBucket': 'note-app-b35bf.appspot.com'
+    'storageBucket': str(os.environ.get('FIREBASE_STORAGE'))
 })
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -31,10 +31,11 @@ firebase_admin.initialize_app(cred, {
 SECRET_KEY = 'django-insecure-6zpvd&($jlp0p@navj*h$8ta^-ks&qqgo_5h$nu&936sk$eay_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = str(os.environ.get('DEBUG')) == 1
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                 '.vercel.app']#'radiant-lake-40001-986857f539d4.herokuapp.com'
+                 '.vercel.app',
+                 '.pythonanywhere.com']#'radiant-lake-40001-986857f539d4.herokuapp.com'
 
 # Application definition
 
@@ -110,7 +111,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'note_app.wsgi.application'
+WSGI_APPLICATION = 'note_app.wsgi.app'
 
 
 # Database
@@ -122,8 +123,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST'),
+#         'PORT': os.environ.get('DB_PORT'),
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
