@@ -31,7 +31,8 @@ firebase_admin.initialize_app(cred, {
 SECRET_KEY = 'django-insecure-6zpvd&($jlp0p@navj*h$8ta^-ks&qqgo_5h$nu&936sk$eay_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == 1
+# DEBUG = str(os.environ.get('DEBUG')) == 1
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  '.vercel.app',
@@ -144,7 +145,6 @@ if DB_IS_AVAIL :
             'USER': DB_USERNAME,
             'PASSWORD': DB_PASSWORD,
             'HOST': DB_HOST,
-            'PORT': DB_PORT,
         }
 }
 

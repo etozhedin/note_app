@@ -8,3 +8,5 @@ django-cors-headers
 gunicorn
 firebase-admin
 pillow
+django-dotenv
+mysqlclient
