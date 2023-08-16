@@ -1,6 +1,6 @@
 serviceAccountKey.json
 .tetxt
-venv
+venv/
 
 .env.prod
 web/.env
