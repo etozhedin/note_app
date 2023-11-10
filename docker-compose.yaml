@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  myApi:
+    image: github.com/etozhedin/note_app:latest
+    container_name: api
+    ports:
+      - 8081:8000
+    restart: always
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=YourDBName
+      - DB_USER=YourDBUser
+      - DB_PASSWORD=YourDBPassword
+
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: YourDBUser
+      POSTGRES_PASSWORD: YourDBPassword
+      POSTGRES_DB: YourDBName

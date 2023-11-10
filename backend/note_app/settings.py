@@ -35,6 +35,8 @@ SECRET_KEY = 'django-insecure-6zpvd&($jlp0p@navj*h$8ta^-ks&qqgo_5h$nu&936sk$eay_
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
+                 'localhost',
+                 '0.0.0.0',
                  '.vercel.app',
                  '.pythonanywhere.com']#'radiant-lake-40001-986857f539d4.herokuapp.com'
 
